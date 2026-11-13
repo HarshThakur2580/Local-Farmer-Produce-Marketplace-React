@@ -1,0 +1,23 @@
+footer {
+    background-color: #1b4332;
+    color: white;
+    padding: 40px 8%;
+}
+
+footer a {
+    color: #d8f3dc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+footer h2,
+footer h3 {
+    margin-bottom: 15px;
+}
+
+footer p {
+    line-height: 1.7;
+}

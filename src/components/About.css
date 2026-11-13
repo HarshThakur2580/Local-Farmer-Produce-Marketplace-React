@@ -1,0 +1,17 @@
+/* About section */
+.about-section {
+  background-color: var(--light-green);
+  color: var(--primary-green);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.about-section h2 {
+  margin-bottom: 1rem;
+}
+
+.about-section p {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}

@@ -1,0 +1,87 @@
+/* Hero section - override global section padding */
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Real clickable buttons overlaid on top of the image buttons */
+.hero-buttons {
+  position: absolute;
+  bottom: 22%;
+  left: 8%;
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
+  line-height: 1;
+}
+
+.hero-buttons .primary-btn {
+  background-color: var(--primary-green);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hero-buttons .primary-btn:hover {
+  background-color: var(--forest-green);
+}
+
+.hero-buttons .secondary-btn {
+  background-color: var(--white);
+  color: var(--primary-green);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--primary-green);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hero-buttons .secondary-btn:hover {
+  background-color: var(--light-green);
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    bottom: 15%;
+    left: 5%;
+    gap: 0.5rem;
+  }
+
+  .hero-buttons .primary-btn,
+  .hero-buttons .secondary-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    bottom: 10%;
+    left: 4%;
+    gap: 0.4rem;
+  }
+
+  .hero-buttons .primary-btn,
+  .hero-buttons .secondary-btn {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+  }
+}

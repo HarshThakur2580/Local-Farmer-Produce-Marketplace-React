@@ -70,3 +70,66 @@
   opacity: 0.85;
 }
 
+
+.user-greeting {
+  color: #D7F5C7;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logout-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 0;
+}
+
+.nav-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.portal-badge-link {
+  background: #d8f3dc;
+  color: var(--forest-green) !important;
+  font-weight: 700 !important;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.portal-badge-link:hover {
+  background: #b7e4c7;
+}
+
+.admin-nav-pill {
+  background: #fef08a;
+  color: #854d0e !important;
+}
+
+.farmer-nav-pill {
+  background: #bbf7d0;
+  color: #14532d !important;
+}
+
+.nav-quick-link {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.user-role-tag {
+  font-size: 0.72rem;
+  opacity: 0.85;
+  margin-left: 0.3rem;
+  text-transform: capitalize;
+}

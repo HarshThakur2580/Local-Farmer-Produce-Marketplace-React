@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useLocation } from '../context/LocationContext';
 import './Cart.css';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
+  const { distanceKm, deliveryCharge, locationName, setManualDistance, detectLiveLocation, detecting } = useLocation();
 
-  const deliveryCharge = cartItems.length > 0 ? 40 : 0;
   const subtotal = getCartTotal();
-  const total = subtotal + deliveryCharge;
+  const total = subtotal + (cartItems.length > 0 ? deliveryCharge : 0);
 
   if (cartItems.length === 0) {
     return (
@@ -32,6 +33,37 @@ const Cart = () => {
         <div className="cart-title-row">
           <h2>Your Cart</h2>
           <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
+        </div>
+
+        {/* Location & Delivery Information in Cart */}
+        <div className="cart-location-box">
+          <div className="cart-loc-header">
+            <span>📍 <strong>Delivery Address Distance:</strong> {locationName} ({distanceKm} km)</span>
+            <button className="cart-gps-btn" onClick={detectLiveLocation} disabled={detecting}>
+              {detecting ? 'Locating...' : '🎯 Update GPS'}
+            </button>
+          </div>
+          <div className="cart-distance-chips">
+            <span className="chip-label">Quick Distance:</span>
+            <button
+              className={`cart-dist-chip ${distanceKm <= 2 ? 'active' : ''}`}
+              onClick={() => setManualDistance(1.2, 'Local Area (<2km)')}
+            >
+              Nearby (&lt;2 km) - FREE Delivery
+            </button>
+            <button
+              className={`cart-dist-chip ${distanceKm > 2 && distanceKm <= 5 ? 'active' : ''}`}
+              onClick={() => setManualDistance(4.5, 'Suburban Area (4.5km)')}
+            >
+              4.5 km (₹45)
+            </button>
+            <button
+              className={`cart-dist-chip ${distanceKm > 5 ? 'active' : ''}`}
+              onClick={() => setManualDistance(8.0, 'Outer City (8km)')}
+            >
+              8.0 km (₹80)
+            </button>
+          </div>
         </div>
 
         <div className="cart-items">
@@ -61,17 +93,22 @@ const Cart = () => {
             <span>Subtotal</span>
             <span>₹{subtotal}</span>
           </div>
-          <div className="summary-row">
-            <span>Delivery</span>
-            <span>₹{deliveryCharge}</span>
+          <div className="summary-row delivery-row">
+            <span>
+              Delivery Charge ({distanceKm} km from Hub)
+              {deliveryCharge === 0 && <span className="free-tag"> (FREE &lt;2km)</span>}
+            </span>
+            <span className={deliveryCharge === 0 ? 'free-text' : ''}>
+              {deliveryCharge === 0 ? 'FREE (₹0)' : `₹${deliveryCharge}`}
+            </span>
           </div>
           <div className="summary-row total">
-            <span>Total</span>
+            <span>Total Payable</span>
             <span>₹{total}</span>
           </div>
-          <button className="checkout-btn" onClick={() => alert('Checkout feature coming soon!')}>
-            Proceed to Checkout
-          </button>
+          <Link to="/checkout" className="checkout-btn-link">
+            Proceed to Checkout →
+          </Link>
           <Link to="/shop" className="continue-shopping">← Continue Shopping</Link>
         </div>
       </div>
